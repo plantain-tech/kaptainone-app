@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (is_logged_in()) {
-    redirect('dashboard.php');
+    redirect(base_url() . '/admin/dashboard.php');
 } else {
-    redirect('login.php');
+    redirect(base_url() . '/admin/login.php');
 }

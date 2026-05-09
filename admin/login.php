@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Check if already logged in
 if (is_logged_in()) {
-    redirect('dashboard.php');
+    redirect(base_url() . '/admin/dashboard.php');
 }
 
 $error = '';
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Update last login
         Database::update('admin_users', ['last_login' => date('Y-m-d H:i:s')], 'id = :id', ['id' => $user['id']]);
         
-        redirect('dashboard.php');
+        redirect(base_url() . '/admin/dashboard.php');
     } else {
         $error = 'Invalid username or password';
     }
@@ -51,18 +51,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--bg-secondary);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.08), transparent 30%),
+                linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
+            padding: 2rem 1rem;
         }
         .login-container {
             width: 100%;
             max-width: 420px;
-            padding: 2rem;
         }
         .login-card {
             background: var(--bg-card);
             border: 1px solid var(--line-subtle);
             border-radius: var(--radius-lg);
             padding: 2.5rem;
+            box-shadow: var(--shadow-card);
         }
         .login-logo {
             font-size: 1.75rem;
@@ -97,6 +100,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: 1.25rem;
             font-size: 0.9375rem;
         }
+        .login-return {
+            display: inline-flex;
+            width: 100%;
+            margin-top: 1rem;
+            border-color: rgba(201, 162, 39, 0.18);
+            color: var(--text-secondary);
+        }
+        .login-return:hover,
+        .login-return:focus-visible {
+            color: var(--text-primary);
+            border-color: rgba(201, 162, 39, 0.34);
+            background: rgba(201, 162, 39, 0.08);
+        }
     </style>
 </head>
 <body>
@@ -130,6 +146,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <button type="submit" class="btn btn-primary btn-large" style="width: 100%; margin-top: 0.5rem;">Sign In</button>
             </form>
+
+            <a href="<?= base_url() ?>/index.php" class="btn btn-secondary btn-large login-return">Back to Main Site</a>
         </div>
     </div>
 </body>
