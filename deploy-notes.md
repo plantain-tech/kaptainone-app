@@ -8,3 +8,6 @@
 - Fixed service card links so they work from both the homepage and `/services/index.php`.
 - Fixed admin redirects so `/admin` and `/admin/` route safely into the admin area.
 - Added a styled "Back to Main Site" button to the admin login screen.
+- Added gig worker public landing page, package browsing, package detail pages, registration, login, OAuth placeholder routes, dashboard, profile, leasing applications, leased equipment, and support workflow.
+- Added admin management screens for gig workers, equipment packages, leasing applications, and equipment inventory.
+- Extended `database.sql` with users, user profiles, OAuth accounts, equipment packages/items, leasing applications, leased equipment, and support messages.

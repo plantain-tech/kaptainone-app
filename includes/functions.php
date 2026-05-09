@@ -59,6 +59,8 @@ function nav_active(string $page): string {
     $map = [
         'solutions' => ['/solutions.php'],
         'services' => ['/services', '/services/'],
+        'gig-workers' => ['/gig-workers.php'],
+        'packages' => ['/packages.php', '/package.php'],
         'about' => ['/about.php'],
         'blog' => ['/blog', '/blog/'],
         'contact' => ['/contact.php']
@@ -100,8 +102,8 @@ function base_url(): string {
                 return 'http://' . $host;
             }
 
-            if (preg_match('#/(admin|blog|partners|services)(/.*)?$#', $scriptDir)) {
-                $scriptDir = preg_replace('#/(admin|blog|partners|services)(/.*)?$#', '', $scriptDir);
+            if (preg_match('#/(admin|auth|blog|dashboard|partners|services)(/.*)?$#', $scriptDir)) {
+                $scriptDir = preg_replace('#/(admin|auth|blog|dashboard|partners|services)(/.*)?$#', '', $scriptDir);
                 $scriptDir = rtrim($scriptDir, '/');
             }
 

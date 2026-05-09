@@ -15,6 +15,8 @@
             </div>
             <div class="footer-column">
                 <h4>Solutions</h4>
+                <a href="<?= base_url() ?>/gig-workers.php">For Gig Workers</a>
+                <a href="<?= base_url() ?>/packages.php">Equipment Packages</a>
                 <a href="<?= base_url() ?>/solutions.php">For Travel Agents</a>
                 <a href="<?= base_url() ?>/solutions.php">For Hotels</a>
                 <a href="<?= base_url() ?>/solutions.php">For Corporate Travel</a>

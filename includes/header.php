@@ -37,14 +37,16 @@ if (!isset($pageDescription)) $pageDescription = site('tagline');
             <div class="nav-links">
                 <a href="<?= base_url() ?>/solutions.php" class="nav-link <?= nav_active('solutions') ?>">Solutions</a>
                 <a href="<?= base_url() ?>/services/index.php" class="nav-link <?= nav_active('services') ?>">Services</a>
+                <a href="<?= base_url() ?>/gig-workers.php" class="nav-link <?= nav_active('gig-workers') ?>">Gig Workers</a>
+                <a href="<?= base_url() ?>/packages.php" class="nav-link <?= nav_active('packages') ?>">Packages</a>
                 <a href="<?= base_url() ?>/about.php" class="nav-link <?= nav_active('about') ?>">About</a>
                 <a href="<?= base_url() ?>/blog/index.php" class="nav-link <?= nav_active('blog') ?>">Blog</a>
                 <a href="<?= base_url() ?>/contact.php" class="nav-link <?= nav_active('contact') ?>">Contact</a>
             </div>
 
             <div class="nav-cta">
-                <a href="<?= base_url() ?>/partners/become-a-partner.php" class="btn btn-secondary">Become a Partner</a>
-                <a href="<?= base_url() ?>/partners/request-a-demo.php" class="btn btn-primary">Request a Demo</a>
+                <a href="<?= base_url() ?>/login.php" class="btn btn-secondary">Sign In</a>
+                <a href="<?= base_url() ?>/register.php" class="btn btn-primary">Create Account</a>
             </div>
 
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -57,10 +59,12 @@ if (!isset($pageDescription)) $pageDescription = site('tagline');
         <div class="mobile-menu" id="mobileMenu">
             <a href="<?= base_url() ?>/solutions.php" class="<?= nav_active('solutions') ?>">Solutions</a>
             <a href="<?= base_url() ?>/services/index.php" class="<?= nav_active('services') ?>">Services</a>
+            <a href="<?= base_url() ?>/gig-workers.php" class="<?= nav_active('gig-workers') ?>">Gig Workers</a>
+            <a href="<?= base_url() ?>/packages.php" class="<?= nav_active('packages') ?>">Packages</a>
             <a href="<?= base_url() ?>/about.php" class="<?= nav_active('about') ?>">About</a>
             <a href="<?= base_url() ?>/blog/index.php" class="<?= nav_active('blog') ?>">Blog</a>
             <a href="<?= base_url() ?>/contact.php" class="<?= nav_active('contact') ?>">Contact</a>
-            <a href="<?= base_url() ?>/partners/become-a-partner.php" class="btn btn-secondary">Become a Partner</a>
-            <a href="<?= base_url() ?>/partners/request-a-demo.php" class="btn btn-primary">Request a Demo</a>
+            <a href="<?= base_url() ?>/login.php" class="btn btn-secondary">Sign In</a>
+            <a href="<?= base_url() ?>/register.php" class="btn btn-primary">Create Account</a>
         </div>
     </nav>

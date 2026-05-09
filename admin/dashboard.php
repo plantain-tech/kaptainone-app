@@ -69,6 +69,10 @@ $pageTitle = 'Dashboard';
             <nav>
                 <ul class="admin-nav">
                     <li><a href="dashboard.php" class="active">Dashboard</a></li>
+                    <li><a href="users.php">Gig Workers</a></li>
+                    <li><a href="packages.php">Packages</a></li>
+                    <li><a href="applications.php">Leasing Applications</a></li>
+                    <li><a href="equipment.php">Equipment</a></li>
                     <li><a href="blog/">Blog Posts</a></li>
                     <li><a href="submissions/partners.php">Partner Inquiries<?= $new_partners > 0 ? " <span class='badge'>{$new_partners}</span>" : '' ?></a></li>
                     <li><a href="submissions/demos.php">Demo Requests<?= $new_demos > 0 ? " <span class='badge'>{$new_demos}</span>" : '' ?></a></li>
