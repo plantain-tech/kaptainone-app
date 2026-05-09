@@ -1,0 +1,20 @@
+# Local backups and generated files
+backups/
+*.log
+
+# Environment and machine-local secrets
+.env
+.env.*
+config/*.local.php
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
