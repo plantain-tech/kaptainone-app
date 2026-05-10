@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $pageTitle = 'Contact';
-$pageDescription = 'Get in touch with Kaptain One. Request a quote, partnership information, or general inquiries.';
+$pageDescription = 'Get in touch with Kaptain One about Warsaw e-bike and scooter rentals for couriers.';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -17,7 +17,7 @@ require_once __DIR__ . '/includes/header.php';
         <span class="section-kicker">Contact</span>
         <h1>Get In Touch</h1>
         <p class="contact-intro-copy">
-            Have questions? We'd love to hear from you. Reach out for quotes, partnerships, or general inquiries.
+            Have questions? Reach out about courier rentals, asset owner listings, support, or general inquiries.
         </p>
     </div>
 </section>
@@ -48,8 +48,8 @@ require_once __DIR__ . '/includes/header.php';
 
                     <div class="contact-quick-links">
                         <h4>Quick Links</h4>
-                        <a href="partners/become-a-partner.php">Become a Partner</a>
-                        <a href="partners/request-a-demo.php">Request a Demo</a>
+                        <a href="packages.php">View Packages</a>
+                        <a href="register.php">Create Account</a>
                         <a href="services/">View Services</a>
                     </div>
                 </div>
@@ -93,8 +93,8 @@ require_once __DIR__ . '/includes/header.php';
                         <select name="subject" class="form-control">
                             <?php $selectedSubject = $_POST['subject'] ?? 'General Inquiry'; ?>
                             <option <?= $selectedSubject === 'General Inquiry' ? 'selected' : '' ?>>General Inquiry</option>
-                            <option <?= $selectedSubject === 'Quote Request' ? 'selected' : '' ?>>Quote Request</option>
-                            <option <?= $selectedSubject === 'Partnership' ? 'selected' : '' ?>>Partnership</option>
+                            <option <?= $selectedSubject === 'Rental Package' ? 'selected' : '' ?>>Rental Package</option>
+                            <option <?= $selectedSubject === 'Asset Owner Listing' ? 'selected' : '' ?>>Asset Owner Listing</option>
                             <option <?= $selectedSubject === 'Support' ? 'selected' : '' ?>>Support</option>
                         </select>
                     </div>

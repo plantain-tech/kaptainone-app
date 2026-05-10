@@ -1,16 +1,16 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
-$pageTitle = 'About';
-$pageDescription = 'Learn about Kaptain One - premium ground transportation for executives, VIPs, and discerning travelers.';
+$pageTitle = 'About Kaptain One';
+$pageDescription = 'Learn about Kaptain One, a Warsaw courier equipment marketplace for e-bike and scooter rentals.';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
 <section class="page-hero">
     <div class="container">
         <span class="section-kicker">About</span>
-        <h1>Premium Transportation, Redefined</h1>
+        <h1>Courier Equipment, Made Practical</h1>
         <p style="max-width: 700px; margin: 0 auto; font-size: 1.125rem; color: var(--text-secondary);">
-            Kaptain One delivers professional chauffeur service that meets the expectations of executives, VIPs, and discerning travelers.
+            Kaptain One connects Warsaw couriers with local e-bike and scooter rental options built for delivery work.
         </p>
     </div>
 </section>
@@ -21,9 +21,9 @@ require_once __DIR__ . '/includes/header.php';
             <div class="audience-visual"></div>
             <div class="audience-content">
                 <h3>Our Story</h3>
-                <p>Kaptain One was founded on a simple belief: ground transportation should be as refined as the travelers it serves. We combine professional chauffeurs, premium vehicles, and modern technology to create a seamless experience.</p>
+                <p>Kaptain One was founded on a simple belief: delivery work is easier when reliable equipment is simple to access. We connect Warsaw couriers with e-bikes, scooters, clear rental terms, and a practical support workflow.</p>
                 
-                <p>Today, we serve corporate clients, luxury hotels, travel advisors, and individual travelers who demand excellence in every detail.</p>
+                <p>Today, we focus on couriers working with Wolt, Glovo, Bolt Food, Uber Eats, and Stuart, while helping local asset owners earn income from idle e-bikes and scooters.</p>
             </div>
         </div>
     </div>
@@ -40,25 +40,25 @@ require_once __DIR__ . '/includes/header.php';
             <article class="card">
                 <div class="card-icon"></div>
                 <h3 class="card-title">Excellence</h3>
-                <p>We pursue perfection in every interaction, from booking to drop-off.</p>
+                <p>We keep every rental step clear, polished, and easy to complete.</p>
             </article>
             
             <article class="card">
                 <div class="card-icon"></div>
                 <h3 class="card-title">Reliability</h3>
-                <p>On-time, every time. Your schedule is our priority.</p>
+                <p>Couriers need equipment they can count on before a shift starts.</p>
             </article>
             
             <article class="card">
                 <div class="card-icon"></div>
-                <h3 class="card-title">Discretion</h3>
-                <p>Professional service with complete confidentiality and respect for privacy.</p>
+                <h3 class="card-title">Trust</h3>
+                <p>Clear terms, profile checks, and careful handling of personal information.</p>
             </article>
             
             <article class="card">
                 <div class="card-icon"></div>
                 <h3 class="card-title">Innovation</h3>
-                <p>Modern technology meets traditional service excellence.</p>
+                <p>A modern platform for rental applications, equipment status, and support.</p>
             </article>
         </div>
     </div>
@@ -67,10 +67,10 @@ require_once __DIR__ . '/includes/header.php';
 <section class="cta-section">
     <div class="container">
         <span class="section-kicker">Join Us</span>
-        <h2>Experience The Kaptain One Difference</h2>
+        <h2>Start With the Right Courier Equipment</h2>
         <div class="hero-cta">
-            <a href="partners/request-a-demo.php" class="btn btn-primary btn-large">Request a Demo</a>
-            <a href="partners/become-a-partner.php" class="btn btn-secondary btn-large">Become a Partner</a>
+            <a href="packages.php" class="btn btn-primary btn-large">View Packages</a>
+            <a href="register.php" class="btn btn-secondary btn-large">Create Account</a>
         </div>
     </div>
 </section>

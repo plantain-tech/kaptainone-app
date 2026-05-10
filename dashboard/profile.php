@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$platforms = ['Uber', 'Uber Eats', 'Bolt', 'Bolt Food', 'Glovo', 'Wolt', 'Stuart', 'Pyszne.pl', 'Other'];
+$platforms = ['Uber Eats', 'Bolt Food', 'Glovo', 'Wolt', 'Stuart', 'Pyszne.pl', 'Other'];
 $selectedPlatforms = array_map('trim', explode(',', $profile['preferred_platforms'] ?? ''));
 ?>
 
@@ -51,12 +51,12 @@ $selectedPlatforms = array_map('trim', explode(',', $profile['preferred_platform
         <label>Preferred Language<input class="form-control" name="preferred_language" value="<?= e($profile['preferred_language'] ?? 'English') ?>"></label>
         <label>Work Type
             <select class="form-control" name="work_type">
-                <?php foreach (['food delivery','parcel delivery','rideshare driver','private chauffeur','tourist support','local courier'] as $type): ?>
+                <?php foreach (['food delivery','parcel delivery','local courier','e-bike courier','scooter courier'] as $type): ?>
                     <option value="<?= e($type) ?>" <?= ($profile['work_type'] ?? '') === $type ? 'selected' : '' ?>><?= e(ucwords($type)) ?></option>
                 <?php endforeach; ?>
             </select>
         </label>
-        <label>Driver License Status
+        <label>License / Eligibility Status
             <select class="form-control" name="driver_license_status">
                 <?php foreach (['not applicable','no license','valid license','in progress'] as $status): ?>
                     <option value="<?= e($status) ?>" <?= ($profile['driver_license_status'] ?? '') === $status ? 'selected' : '' ?>><?= e(ucwords($status)) ?></option>

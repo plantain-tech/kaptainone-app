@@ -35,7 +35,6 @@ if (!isset($pageDescription)) $pageDescription = site('tagline');
             </a>
 
             <div class="nav-links">
-                <a href="<?= base_url() ?>/solutions.php" class="nav-link <?= nav_active('solutions') ?>">Solutions</a>
                 <a href="<?= base_url() ?>/services/index.php" class="nav-link <?= nav_active('services') ?>">Services</a>
                 <a href="<?= base_url() ?>/gig-workers.php" class="nav-link <?= nav_active('gig-workers') ?>">Gig Workers</a>
                 <a href="<?= base_url() ?>/packages.php" class="nav-link <?= nav_active('packages') ?>">Packages</a>
@@ -57,7 +56,6 @@ if (!isset($pageDescription)) $pageDescription = site('tagline');
         </div>
 
         <div class="mobile-menu" id="mobileMenu">
-            <a href="<?= base_url() ?>/solutions.php" class="<?= nav_active('solutions') ?>">Solutions</a>
             <a href="<?= base_url() ?>/services/index.php" class="<?= nav_active('services') ?>">Services</a>
             <a href="<?= base_url() ?>/gig-workers.php" class="<?= nav_active('gig-workers') ?>">Gig Workers</a>
             <a href="<?= base_url() ?>/packages.php" class="<?= nav_active('packages') ?>">Packages</a>

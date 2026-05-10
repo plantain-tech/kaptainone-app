@@ -1,7 +1,7 @@
 <?php
 $site = [
     'name' => 'Kaptain One',
-    'tagline' => 'Private chauffeur service for executives, VIP guests, airport transfers, and premium events.',
+    'tagline' => 'Warsaw e-bike and scooter rentals for delivery couriers.',
     'phone_display' => '+48 723-385-026',
     'phone_link' => '+48723385026',
     'email' => 'kaptainonewayne@gmail.com',
@@ -11,18 +11,18 @@ $site = [
 ];
 
 $nav = [
-    ['label' => 'Platform', 'href' => 'platform.php'],
-    ['label' => 'Solutions', 'href' => 'solutions.php'],
-    ['label' => 'Fleet', 'href' => 'fleet.php'],
+    ['label' => 'Services', 'href' => 'services/index.php'],
+    ['label' => 'Packages', 'href' => 'packages.php'],
+    ['label' => 'Couriers', 'href' => 'gig-workers.php'],
     ['label' => 'Company', 'href' => 'about.php'],
     ['label' => 'Contact', 'href' => 'contact.php']
 ];
 
 $stats = [
     ['value' => '24/7', 'label' => 'Live booking response'],
-    ['value' => 'VIP', 'label' => 'Guest-first service standard'],
-    ['value' => 'On-time', 'label' => 'Airport and event coordination'],
-    ['value' => 'Brand-ready', 'label' => 'Concierge and partner programs']
+    ['value' => 'Warsaw', 'label' => 'Local courier marketplace'],
+    ['value' => 'E-bike', 'label' => 'Delivery-ready equipment'],
+    ['value' => 'Scooter', 'label' => 'Flexible city movement']
 ];
 
 $features = [

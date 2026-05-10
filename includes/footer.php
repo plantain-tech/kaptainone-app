@@ -9,25 +9,22 @@
             <div class="footer-column">
                 <div class="footer-brand">Kaptain One</div>
                 <p style="color: var(--text-secondary); font-size: 0.9375rem; max-width: 280px;">
-                    Premium ground transportation for executives, VIP guests, and discerning travelers. 
-                    Professional chauffeur service with modern convenience.
+                    E-bike and scooter rentals for Warsaw couriers, with flexible payout options for local asset owners.
                 </p>
             </div>
             <div class="footer-column">
                 <h4>Solutions</h4>
-                <a href="<?= base_url() ?>/gig-workers.php">For Gig Workers</a>
+                <a href="<?= base_url() ?>/gig-workers.php">For Couriers</a>
                 <a href="<?= base_url() ?>/packages.php">Equipment Packages</a>
-                <a href="<?= base_url() ?>/solutions.php">For Travel Agents</a>
-                <a href="<?= base_url() ?>/solutions.php">For Hotels</a>
-                <a href="<?= base_url() ?>/solutions.php">For Corporate Travel</a>
-                <a href="<?= base_url() ?>/solutions.php">For Fleet Partners</a>
+                <a href="<?= base_url() ?>/register.php">For Asset Owners</a>
+                <a href="<?= base_url() ?>/services/index.php">Flexible Payouts</a>
             </div>
             <div class="footer-column">
                 <h4>Services</h4>
-                <a href="<?= base_url() ?>/services/airport-transfers.php">Airport Transfers</a>
-                <a href="<?= base_url() ?>/services/executive-transportation.php">Executive Transportation</a>
-                <a href="<?= base_url() ?>/services/corporate-travel.php">Corporate Travel</a>
-                <a href="<?= base_url() ?>/services/event-transportation.php">Event Transportation</a>
+                <a href="<?= base_url() ?>/services/index.php">E-bike Rentals</a>
+                <a href="<?= base_url() ?>/services/index.php">Scooter Rentals</a>
+                <a href="<?= base_url() ?>/services/index.php">Courier Onboarding Support</a>
+                <a href="<?= base_url() ?>/services/index.php">Asset Owner Listing Support</a>
             </div>
             <div class="footer-column">
                 <h4>Contact</h4>

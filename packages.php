@@ -2,8 +2,8 @@
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/app_data.php';
 
-$pageTitle = 'Equipment Packages';
-$pageDescription = 'Browse Kaptain One leasing packages for gig workers in Warsaw.';
+$pageTitle = 'Warsaw E-Bike & Scooter Packages';
+$pageDescription = 'Browse Kaptain One e-bike and scooter rental packages for Warsaw couriers.';
 $packages = get_active_packages();
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -12,7 +12,7 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container">
         <span class="section-kicker">Leasing Packages</span>
         <h1>Work-Ready Equipment Packages</h1>
-        <p class="contact-intro-copy">Browse e-bikes, courier gear, seasonal protection, and vehicle leasing pathways for gig work in Warsaw.</p>
+        <p class="contact-intro-copy">Browse e-bikes, scooters, courier gear, and weather protection packages for delivery work in Warsaw.</p>
     </div>
 </section>
 

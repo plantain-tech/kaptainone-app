@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
             <p>We collect the information you submit through our contact, demo request, and partner inquiry forms, such as your name, email address, company details, service interests, and message content.</p>
 
             <h2 style="margin: 2rem 0 1rem;">How We Use It</h2>
-            <p>We use submitted information to respond to inquiries, schedule demos, evaluate partnership requests, and improve our transportation services.</p>
+            <p>We use submitted information to respond to inquiries, review courier or asset-owner requests, and improve our courier rental marketplace and support services.</p>
 
             <h2 style="margin: 2rem 0 1rem;">Contact</h2>
             <p>For privacy questions, contact us at <a href="mailto:<?= e(site('email')) ?>" style="color: var(--accent-gold);"><?= e(site('email')) ?></a>.</p>

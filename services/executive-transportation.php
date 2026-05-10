@@ -1,3 +1,4 @@
+<!-- ARCHIVED: out of MVP scope, hidden from navigation on 2026-05-11 -->
 <?php
 require_once __DIR__ . '/../includes/functions.php';
 $pageTitle = 'Executive Transportation';

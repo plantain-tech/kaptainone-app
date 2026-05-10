@@ -17,7 +17,7 @@ $DB_CONFIG = [
 // Site configuration
 $SITE_CONFIG = [
     'name'        => 'Kaptain One',
-    'tagline'     => 'Premium Ground Transportation',
+    'tagline'     => 'Warsaw E-Bike & Scooter Rentals for Couriers',
     'url'         => 'https://kaptainone.com',  // CHANGE THIS
     'email'       => 'kaptainonewayne@gmail.com',
     'phone'       => '+48 723-385-026',

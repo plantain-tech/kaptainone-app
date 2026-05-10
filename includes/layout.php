@@ -24,7 +24,7 @@ HTML;
 
 function render_header(string $active = ''): void {
     global $nav, $site;
-    echo '<div class="topbar">Private chauffeur bookings for airport transfers, VIP travel, and executive events.</div>';
+    echo '<div class="topbar">Warsaw e-bike and scooter rentals for delivery couriers.</div>';
     echo '<header class="site-header"><div class="container nav-wrap">';
     echo '<a class="brand" href="index.php">' . htmlspecialchars($site['name']) . '</a>';
     echo '<nav class="nav">';
@@ -34,8 +34,8 @@ function render_header(string $active = ''): void {
     }
     echo '</nav>';
     echo '<div class="nav-actions">';
-    echo '<a class="btn btn-secondary" href="tel:' . htmlspecialchars($site['phone_link']) . '">Call Now</a>';
-    echo '<a class="btn btn-primary" href="contact.php">Request a Quote</a>';
+    echo '<a class="btn btn-secondary" href="packages.php">View Packages</a>';
+    echo '<a class="btn btn-primary" href="register.php">Create Account</a>';
     echo '</div></div></header>';
 }
 
@@ -44,10 +44,10 @@ function render_footer(): void {
     echo <<<HTML
 <footer class="site-footer">
     <div class="container footer-cta">
-        <p class="section-kicker">Make every ride matter</p>
-        <h2>Move your guests with confidence and style.</h2>
-        <p>Built for premium private transportation, concierge partnerships, and corporate travel.</p>
-        <a class="btn btn-light" href="contact.php">Request a Quote</a>
+        <p class="section-kicker">Warsaw courier equipment</p>
+        <h2>Start delivery work with the right e-bike or scooter.</h2>
+        <p>Built for couriers and local asset owners in Warsaw.</p>
+        <a class="btn btn-light" href="packages.php">View Packages</a>
     </div>
     <div class="container footer-grid">
         <div>
@@ -57,14 +57,13 @@ function render_footer(): void {
         <div>
             <h4>Company</h4>
             <a href="about.php">About</a>
-            <a href="platform.php">Platform</a>
-            <a href="solutions.php">Solutions</a>
+            <a href="services/index.php">Services</a>
+            <a href="packages.php">Packages</a>
         </div>
         <div>
             <h4>Services</h4>
-            <a href="fleet.php">Fleet</a>
-            <a href="contact.php">Airport Transfers</a>
-            <a href="contact.php">Hourly Chauffeur</a>
+            <a href="gig-workers.php">For Couriers</a>
+            <a href="register.php">Create Account</a>
         </div>
         <div>
             <h4>Contact</h4>

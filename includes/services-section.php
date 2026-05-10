@@ -1,57 +1,44 @@
 <?php
+// UNUSED: legacy service-card include kept for direct-reference safety after Day 2 MVP scope cleanup.
 $services = [
     [
-        'label' => 'Arrivals & Departures',
-        'title' => 'Airport Transfers',
-        'description' => 'Flight-aware chauffeur service with polished meet-and-greet execution for seamless airport movement.',
-        'href' => 'services/airport-transfers.php',
-        'icon' => '✦'
+        'label' => 'Courier Equipment',
+        'title' => 'E-bike Rentals',
+        'description' => 'Work-ready e-bike options for Warsaw delivery couriers.',
+        'href' => 'services/index.php',
+        'icon' => '*'
     ],
     [
-        'label' => 'Business Class',
-        'title' => 'Executive Transportation',
-        'description' => 'Refined black car service for executives, clients, and leadership teams who expect elevated standards.',
-        'href' => 'services/executive-transportation.php',
-        'icon' => '✦'
+        'label' => 'Flexible Mobility',
+        'title' => 'Scooter Rentals',
+        'description' => 'Scooter rental packages for couriers who need efficient city movement.',
+        'href' => 'services/index.php',
+        'icon' => '*'
     ],
     [
-        'label' => 'Enterprise Mobility',
-        'title' => 'Corporate Travel',
-        'description' => 'Structured transport solutions for assistants, teams, and premium corporate travel programs.',
-        'href' => 'services/corporate-travel.php',
-        'icon' => '✦'
+        'label' => 'Getting Started',
+        'title' => 'Courier Onboarding Support',
+        'description' => 'Profile, requirements, and application steps organized in one account.',
+        'href' => 'services/index.php',
+        'icon' => '*'
     ],
     [
-        'label' => 'As Directed',
-        'title' => 'Hourly Chauffeur',
-        'description' => 'Flexible executive coverage for meetings, roadshows, city movement, and multi-stop itineraries.',
-        'href' => 'services/hourly-chauffeur.php',
-        'icon' => '✦'
-    ],
-    [
-        'label' => 'Coordinated Logistics',
-        'title' => 'Event Transportation',
-        'description' => 'Elevated guest transportation planning for conferences, private events, and VIP schedules.',
-        'href' => 'services/event-transportation.php',
-        'icon' => '✦'
-    ],
-    [
-        'label' => 'White-Glove Service',
-        'title' => 'VIP Concierge',
-        'description' => 'Discreet, high-touch travel support for guests who value privacy, precision, and polish.',
-        'href' => 'services/vip-concierge.php',
-        'icon' => '✦'
+        'label' => 'Owner Income',
+        'title' => 'Asset Owner Listing Support',
+        'description' => 'A focused path for listing idle e-bikes and scooters for courier rentals.',
+        'href' => 'services/index.php',
+        'icon' => '*'
     ],
 ];
 ?>
 <section class="services-premium-band section" aria-labelledby="services-premium-title">
     <div class="container services-premium-band__container">
         <div class="services-premium-band__intro">
-            <span class="services-premium-band__eyebrow">Signature Services</span>
-            <h2 class="services-premium-band__title" id="services-premium-title">Executive Mobility, Refined for Every Journey</h2>
+            <span class="services-premium-band__eyebrow">Core Services</span>
+            <h2 class="services-premium-band__title" id="services-premium-title">Courier Rentals, Built Around Warsaw</h2>
             <p class="services-premium-band__text">
-                Premium chauffeur services for airport transfers, corporate movement, event logistics, and discreet VIP travel,
-                delivered with precision, polish, and executive-level care.
+                E-bike rentals, scooter rentals, onboarding support, and asset-owner listing support
+                for the first version of the Kaptain One marketplace.
             </p>
         </div>
 
@@ -68,8 +55,8 @@ $services = [
                         <p class="executive-card__description"><?= e($service['description']) ?></p>
                     </div>
                     <div class="executive-card__footer">
-                        <span class="executive-card__cta">Explore Service</span>
-                        <span class="executive-card__arrow" aria-hidden="true">→</span>
+                        <span class="executive-card__cta">View Services</span>
+                        <span class="executive-card__arrow" aria-hidden="true">-&gt;</span>
                     </div>
                 </a>
             <?php endforeach; ?>

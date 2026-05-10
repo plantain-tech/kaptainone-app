@@ -57,7 +57,6 @@ function nav_active(string $page): string {
     $current = basename($script, '.php');
 
     $map = [
-        'solutions' => ['/solutions.php'],
         'services' => ['/services', '/services/'],
         'gig-workers' => ['/gig-workers.php'],
         'packages' => ['/packages.php', '/package.php'],
