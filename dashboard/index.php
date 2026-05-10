@@ -2,6 +2,10 @@
 $dashboardTitle = 'Overview';
 require_once __DIR__ . '/_layout.php';
 
+if (has_role('asset_owner') && !has_role('gig_worker')) {
+    redirect(base_url() . '/dashboard/owner/');
+}
+
 $profile = Database::fetch("SELECT * FROM user_profiles WHERE user_id = ?", [$user['id']]) ?? [];
 $completion = profile_completion($profile);
 $applications = Database::fetchAll(
@@ -24,6 +28,12 @@ $leased = Database::fetchAll(
 $recommended = array_slice(get_active_packages(), 0, 3);
 ?>
 
+<?php if (has_role('asset_owner') && has_role('gig_worker')): ?>
+    <section class="dash-section">
+        <h2>Your Courier Activity</h2>
+    </section>
+<?php endif; ?>
+
 <section class="dash-grid">
     <div class="dash-panel hero-panel">
         <h2>Welcome, <?= e($profile['full_name'] ?? $user['email']) ?></h2>
@@ -45,6 +55,29 @@ $recommended = array_slice(get_active_packages(), 0, 3);
         <p>View pickup, active lease, and return status.</p>
     </div>
 </section>
+
+<?php if (has_role('asset_owner') && has_role('gig_worker')): ?>
+    <section class="dash-section">
+        <h2>Your Asset Owner Activity</h2>
+        <div class="dash-grid">
+            <div class="dash-panel">
+                <h3>Active Listings</h3>
+                <strong class="dash-number">0</strong>
+                <p>Your owner listings will appear after the Day 4 listing flow is built.</p>
+            </div>
+            <div class="dash-panel">
+                <h3>Booking Requests</h3>
+                <strong class="dash-number">0</strong>
+                <p>No booking requests yet.</p>
+            </div>
+            <div class="dash-panel">
+                <h3>Owner View</h3>
+                <p>Open the asset-owner dashboard shell for listings, booking requests, and payout settings.</p>
+                <a href="<?= base_url() ?>/dashboard/owner/" class="btn btn-secondary">Open Owner View</a>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
 
 <section class="dash-section">
     <h2>Recommended Packages</h2>

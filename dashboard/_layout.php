@@ -5,6 +5,7 @@ require_user();
 
 $user = current_user();
 $dashboardTitle = $dashboardTitle ?? 'Dashboard';
+$isDualRole = has_role('gig_worker') && has_role('asset_owner');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +27,9 @@ $dashboardTitle = $dashboardTitle ?? 'Dashboard';
             <a href="<?= base_url() ?>/dashboard/applications.php">Applications</a>
             <a href="<?= base_url() ?>/dashboard/equipment.php">My Equipment</a>
             <a href="<?= base_url() ?>/dashboard/support.php">Support</a>
+            <?php if (has_role('asset_owner')): ?>
+                <a href="<?= base_url() ?>/dashboard/owner/index.php">Owner View</a>
+            <?php endif; ?>
             <a href="<?= base_url() ?>/auth/logout.php">Logout</a>
         </nav>
     </aside>
@@ -35,5 +39,9 @@ $dashboardTitle = $dashboardTitle ?? 'Dashboard';
                 <span class="section-kicker">Gig Worker Portal</span>
                 <h1><?= e($dashboardTitle) ?></h1>
             </div>
-            <a href="<?= base_url() ?>/packages.php" class="btn btn-primary">Browse Packages</a>
+            <?php if ($isDualRole): ?>
+                <a href="<?= base_url() ?>/dashboard/owner/index.php" class="btn btn-secondary">Owner View</a>
+            <?php else: ?>
+                <a href="<?= base_url() ?>/packages.php" class="btn btn-primary">Browse Packages</a>
+            <?php endif; ?>
         </header>

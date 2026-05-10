@@ -42,7 +42,21 @@ function csrf_token(): string {
 // Verify CSRF token
 function verify_csrf(string $token): bool {
     global $SECURITY_CONFIG;
-    return hash_equals($_SESSION[$SECURITY_CONFIG['csrf_token_name']] ?? '', $token);
+    try {
+        if ($token === '') {
+            return false;
+        }
+
+        $tokenName = $SECURITY_CONFIG['csrf_token_name'] ?? '';
+        if ($tokenName === '' || empty($_SESSION[$tokenName]) || !is_string($_SESSION[$tokenName])) {
+            return false;
+        }
+
+        return hash_equals($_SESSION[$tokenName], $token);
+    } catch (Throwable $e) {
+        error_log('CSRF verification failed: ' . $e->getMessage());
+        return false;
+    }
 }
 
 // Get page title

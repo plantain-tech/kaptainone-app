@@ -22,7 +22,7 @@ require_once __DIR__ . '/includes/header.php';
             clear terms, and owner payout options.
         </p>
         <div class="hero-cta">
-            <a href="register.php" class="btn btn-primary btn-large">List Your E-Bike or Scooter</a>
+            <a href="register.php?role=owner" class="btn btn-primary btn-large">List Your E-Bike or Scooter</a>
             <a href="packages.php" class="btn btn-secondary btn-large">View Rental Packages</a>
         </div>
     </div>

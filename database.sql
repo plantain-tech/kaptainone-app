@@ -117,6 +117,17 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_users_active (is_active)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS user_roles (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    role ENUM('gig_worker','asset_owner','admin') NOT NULL,
+    granted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_user_role (user_id, role),
+    INDEX idx_user_roles_user_id (user_id),
+    INDEX idx_user_roles_role (role),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS user_profiles (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL UNIQUE,
@@ -244,6 +255,17 @@ CREATE TABLE IF NOT EXISTS support_messages (
 -- Insert default admin (password: admin123)
 INSERT IGNORE INTO admin_users (username, email, password_hash, full_name) VALUES 
 ('admin', 'admin@kaptainone.com', '$2y$10$KRYC4Odx1XUQ307wO3ee2.m0kz0lmruX.1RDCYprrER0nSCBcRR7i', 'Administrator');
+
+-- Mirror the default admin into app users for the multi-role authorization model.
+INSERT IGNORE INTO users (email, password_hash, role, auth_provider, is_active)
+SELECT email, password_hash, 'admin', 'email', is_active
+FROM admin_users
+WHERE email = 'admin@kaptainone.com';
+
+INSERT IGNORE INTO user_roles (user_id, role)
+SELECT id, role
+FROM users
+WHERE role IN ('gig_worker', 'admin');
 
 -- Insert default categories
 INSERT IGNORE INTO blog_categories (name, slug, description) VALUES

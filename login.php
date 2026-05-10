@@ -2,12 +2,12 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/config/oauth.php';
 
-if (user_logged_in()) redirect(base_url() . '/dashboard/index.php');
+if (user_logged_in()) redirect(dashboard_redirect_for_roles(current_user_roles()));
 
 $result = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = authenticate_user($_POST);
-    if ($result['success']) redirect(base_url() . '/dashboard/index.php');
+    if ($result['success']) redirect($result['redirect']);
 }
 
 $pageTitle = 'Sign In';

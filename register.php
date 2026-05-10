@@ -2,12 +2,18 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/config/oauth.php';
 
-if (user_logged_in()) redirect(base_url() . '/dashboard/index.php');
+$selectedRole = $_GET['role'] ?? '';
+if (!in_array($selectedRole, ['owner', 'both'], true)) {
+    $selectedRole = '';
+}
+
+if (user_logged_in()) redirect(dashboard_redirect_for_roles(current_user_roles()));
 
 $result = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = register_user($_POST);
-    if ($result['success']) redirect(base_url() . '/dashboard/index.php');
+    if ($result['success']) redirect($result['redirect']);
+    $selectedRole = $_POST['role_selection'] ?? $selectedRole;
 }
 
 $pageTitle = 'Create Account';
@@ -33,6 +39,16 @@ require_once __DIR__ . '/includes/header.php';
 
         <form method="post" class="app-form">
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+            <label>How will you use Kaptain One?
+                <select class="form-control" name="role_selection" required>
+                    <?php
+                        $roleValue = $selectedRole === 'owner' ? 'asset_owner' : ($selectedRole === 'both' ? 'both' : ($selectedRole ?: 'gig_worker'));
+                    ?>
+                    <option value="gig_worker" <?= $roleValue === 'gig_worker' ? 'selected' : '' ?>>I want to rent equipment to start delivering</option>
+                    <option value="asset_owner" <?= $roleValue === 'asset_owner' ? 'selected' : '' ?>>I want to rent out my idle e-bike or scooter</option>
+                    <option value="both" <?= $roleValue === 'both' ? 'selected' : '' ?>>Both</option>
+                </select>
+            </label>
             <label>Full Name<input class="form-control" name="full_name" required value="<?= e($_POST['full_name'] ?? '') ?>"></label>
             <label>Email<input class="form-control" type="email" name="email" required value="<?= e($_POST['email'] ?? '') ?>"></label>
             <label>Password<input class="form-control" type="password" name="password" required minlength="8"></label>
