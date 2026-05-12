@@ -18,3 +18,7 @@ desktop.ini
 tmp/
 temp/
 *.tmp
+
+# User/generated uploads; keep upload security rules only
+assets/uploads/listings/*
+!assets/uploads/listings/.htaccess

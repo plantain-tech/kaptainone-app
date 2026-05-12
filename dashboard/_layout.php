@@ -42,6 +42,6 @@ $isDualRole = has_role('gig_worker') && has_role('asset_owner');
             <?php if ($isDualRole): ?>
                 <a href="<?= base_url() ?>/dashboard/owner/index.php" class="btn btn-secondary">Owner View</a>
             <?php else: ?>
-                <a href="<?= base_url() ?>/packages.php" class="btn btn-primary">Browse Packages</a>
+                <a href="<?= base_url() ?>/listings.php" class="btn btn-primary">Browse Packages</a>
             <?php endif; ?>
         </header>

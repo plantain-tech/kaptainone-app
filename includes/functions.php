@@ -73,7 +73,7 @@ function nav_active(string $page): string {
     $map = [
         'services' => ['/services', '/services/'],
         'gig-workers' => ['/gig-workers.php'],
-        'packages' => ['/packages.php', '/package.php'],
+        'packages' => ['/packages.php', '/package.php', '/listings.php', '/listing.php'],
         'about' => ['/about.php'],
         'blog' => ['/blog', '/blog/'],
         'contact' => ['/contact.php']

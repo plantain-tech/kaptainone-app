@@ -23,7 +23,7 @@ require_once __DIR__ . '/includes/header.php';
         </p>
         <div class="hero-cta">
             <a href="register.php?role=owner" class="btn btn-primary btn-large">List Your E-Bike or Scooter</a>
-            <a href="packages.php" class="btn btn-secondary btn-large">View Rental Packages</a>
+            <a href="listings.php" class="btn btn-secondary btn-large">View Rental Packages</a>
         </div>
     </div>
 </section>
@@ -226,7 +226,7 @@ require_once __DIR__ . '/includes/header.php';
         <h2>Ready to Start With the Right Equipment?</h2>
         <p>Browse e-bike and scooter rental packages for courier work in Warsaw.</p>
         <div class="hero-cta">
-            <a href="packages.php" class="btn btn-primary btn-large">View Rental Packages</a>
+            <a href="listings.php" class="btn btn-primary btn-large">View Rental Packages</a>
             <a href="register.php" class="btn btn-secondary btn-large">Create Account</a>
         </div>
     </div>

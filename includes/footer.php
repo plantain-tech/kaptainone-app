@@ -15,7 +15,7 @@
             <div class="footer-column">
                 <h4>Solutions</h4>
                 <a href="<?= base_url() ?>/gig-workers.php">For Couriers</a>
-                <a href="<?= base_url() ?>/packages.php">Equipment Packages</a>
+                <a href="<?= base_url() ?>/listings.php">Equipment Listings</a>
                 <a href="<?= base_url() ?>/register.php">For Asset Owners</a>
                 <a href="<?= base_url() ?>/services/index.php">Flexible Payouts</a>
             </div>

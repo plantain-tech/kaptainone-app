@@ -365,3 +365,32 @@ textarea.form-control {
     background: var(--accent-gold);
     color: var(--bg-primary);
 }
+
+@media (max-width: 560px) {
+    .listing-photo-preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .listing-form__actions .btn {
+        width: 100%;
+    }
+
+    .listing-lightbox__image {
+        max-width: 94vw;
+        max-height: 78vh;
+    }
+
+    .listing-lightbox__nav {
+        top: auto;
+        bottom: 1rem;
+        transform: none;
+    }
+
+    .listing-lightbox__nav--prev {
+        left: calc(50% - 4rem);
+    }
+
+    .listing-lightbox__nav--next {
+        right: calc(50% - 4rem);
+    }
+}
