@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../includes/auth.php';
 require_once __DIR__ . '/../../includes/app_data.php';
+require_once __DIR__ . '/../../includes/booking_state.php';
+require_once __DIR__ . '/../../includes/notifications.php';
 require_role('asset_owner');
 
 $user = current_user();
@@ -39,4 +41,13 @@ $dashboardTitle = $dashboardTitle ?? 'Owner Dashboard';
                 <h1><?= e($dashboardTitle) ?></h1>
             </div>
             <a href="<?= base_url() ?>/dashboard/owner/listing-new.php" class="btn btn-primary">Create Listing</a>
+            <?php render_notification_bell((int) $user['id']); ?>
         </header>
+        <?php foreach (['success' => 'alert-success', 'error' => 'alert-error'] as $flashKey => $flashClass): ?>
+            <?php if ($flashMessage = flash($flashKey)): ?>
+                <div class="alert <?= $flashClass ?> listing-flash" data-flash-banner>
+                    <span><?= e($flashMessage) ?></span>
+                    <button type="button" data-flash-dismiss aria-label="Dismiss">&times;</button>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>

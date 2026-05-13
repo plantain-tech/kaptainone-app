@@ -71,6 +71,7 @@ $pageTitle = 'Dashboard';
                     <li><a href="dashboard.php" class="active">Dashboard</a></li>
                     <li><a href="users.php">Gig Workers</a></li>
                     <li><a href="listings.php">Marketplace Listings</a></li>
+                    <li><a href="bookings.php">Marketplace Bookings</a></li>
                     <li><a href="packages.php">Packages</a></li>
                     <li><a href="applications.php">Leasing Applications</a></li>
                     <li><a href="equipment.php">Equipment</a></li>
@@ -111,6 +112,7 @@ $pageTitle = 'Dashboard';
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="blog/create.php" class="btn btn-primary">+ New Blog Post</a>
                     <a href="listings.php" class="btn btn-secondary">Moderate Listings</a>
+                    <a href="bookings.php" class="btn btn-secondary">Review Bookings</a>
                     <a href="../" target="_blank" class="btn btn-secondary">View Site →</a>
                 </div>
             </div>

@@ -115,8 +115,8 @@ function base_url(): string {
                 return 'http://' . $host;
             }
 
-            if (preg_match('#/(admin|auth|blog|dashboard|partners|services)(/.*)?$#', $scriptDir)) {
-                $scriptDir = preg_replace('#/(admin|auth|blog|dashboard|partners|services)(/.*)?$#', '', $scriptDir);
+            if (preg_match('#/(admin|auth|blog|dashboard|listings|partners|services)(/.*)?$#', $scriptDir)) {
+                $scriptDir = preg_replace('#/(admin|auth|blog|dashboard|listings|partners|services)(/.*)?$#', '', $scriptDir);
                 $scriptDir = rtrim($scriptDir, '/');
             }
 

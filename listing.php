@@ -27,6 +27,18 @@ $listing['view_count'] = ((int) $listing['view_count']) + 1;
 $photos = get_listing_photos($listingId);
 $ownerName = trim((string) ($listing['owner_name'] ?? ''));
 $ownerDisplay = $ownerName !== '' ? strtok($ownerName, ' ') : 'Verified owner';
+$requestHref = base_url() . '/listings/request.php?listing_id=' . $listingId;
+$requestText = 'Request rental';
+$requestDisabled = false;
+if (!$user) {
+    $requestText = 'Sign in to request';
+} elseif ((int) $listing['owner_user_id'] === (int) $user['id']) {
+    $requestText = 'This is your listing';
+    $requestDisabled = true;
+} elseif (!has_role('gig_worker')) {
+    $requestText = 'Add courier role to request';
+    $requestHref = base_url() . '/dashboard/profile.php';
+}
 
 $pageTitle = $listing['title'] . ' | Warsaw Courier Rental';
 $pageDescription = 'View this Warsaw ' . strtolower(listing_asset_label($listing['asset_type'])) . ' rental listing for courier work.';
@@ -66,7 +78,11 @@ require_once __DIR__ . '/includes/header.php';
                     <p>Model: <?= e(trim(($listing['brand'] ?? '') . ' ' . ($listing['model'] ?? ''))) ?></p>
                 <?php endif; ?>
                 <div class="app-actions">
-                    <a href="<?= base_url() ?>/booking-coming-soon.php" class="btn btn-primary">Request rental</a>
+                    <?php if ($requestDisabled): ?>
+                        <button class="btn btn-secondary" type="button" disabled><?= e($requestText) ?></button>
+                    <?php else: ?>
+                        <a href="<?= e($requestHref) ?>" class="btn btn-primary"><?= e($requestText) ?></a>
+                    <?php endif; ?>
                     <button class="btn btn-secondary" type="button" title="Sign in to save">Save for later</button>
                 </div>
             </aside>

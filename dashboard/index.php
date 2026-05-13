@@ -26,11 +26,39 @@ $leased = Database::fetchAll(
     [$user['id']]
 );
 $recommended = array_slice(get_active_packages(), 0, 3);
+$pendingBookings = Database::fetchAll(
+    "SELECT b.*, l.title AS listing_title
+     FROM bookings b
+     JOIN listings l ON l.id = b.listing_id
+     WHERE b.courier_user_id = ? AND b.status = 'requested'
+     ORDER BY b.created_at DESC LIMIT 3",
+    [$user['id']]
+);
 ?>
 
 <?php if (has_role('asset_owner') && has_role('gig_worker')): ?>
     <section class="dash-section">
         <h2>Your Courier Activity</h2>
+    </section>
+<?php endif; ?>
+
+<?php if ($pendingBookings): ?>
+    <section class="dash-panel">
+        <div class="section-heading">
+            <div>
+                <span class="section-kicker">Pending requests</span>
+                <h2>Your rental requests</h2>
+            </div>
+            <a class="btn btn-secondary" href="<?= base_url() ?>/dashboard/courier/bookings.php">View bookings</a>
+        </div>
+        <div class="status-list">
+            <?php foreach ($pendingBookings as $booking): ?>
+                <div class="status-row">
+                    <span><?= e($booking['listing_title']) ?></span>
+                    <span class="status-pill status-requested">Requested</span>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </section>
 <?php endif; ?>
 

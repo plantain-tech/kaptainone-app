@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/app_data.php';
+require_once __DIR__ . '/../includes/booking_state.php';
+require_once __DIR__ . '/../includes/notifications.php';
 require_user();
 
 $user = current_user();
@@ -23,6 +25,7 @@ $isDualRole = has_role('gig_worker') && has_role('asset_owner');
         <nav class="dash-nav">
             <a href="<?= base_url() ?>/dashboard/index.php">Overview</a>
             <a href="<?= base_url() ?>/dashboard/profile.php">My Profile</a>
+            <a href="<?= base_url() ?>/dashboard/courier/bookings.php">My Bookings</a>
             <a href="<?= base_url() ?>/dashboard/packages.php">Packages</a>
             <a href="<?= base_url() ?>/dashboard/applications.php">Applications</a>
             <a href="<?= base_url() ?>/dashboard/equipment.php">My Equipment</a>
@@ -44,4 +47,13 @@ $isDualRole = has_role('gig_worker') && has_role('asset_owner');
             <?php else: ?>
                 <a href="<?= base_url() ?>/listings.php" class="btn btn-primary">Browse Packages</a>
             <?php endif; ?>
+            <?php render_notification_bell((int) $user['id']); ?>
         </header>
+        <?php foreach (['success' => 'alert-success', 'error' => 'alert-error'] as $flashKey => $flashClass): ?>
+            <?php if ($flashMessage = flash($flashKey)): ?>
+                <div class="alert <?= $flashClass ?> listing-flash" data-flash-banner>
+                    <span><?= e($flashMessage) ?></span>
+                    <button type="button" data-flash-dismiss aria-label="Dismiss">&times;</button>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>

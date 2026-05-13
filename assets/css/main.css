@@ -1247,6 +1247,165 @@ p {
     font-weight: 700;
 }
 
+.booking-section {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.booking-section__header,
+.booking-card__top,
+.notification-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.booking-card {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 1.15rem;
+    border: 1px solid var(--line-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.025);
+}
+
+.booking-card__thumb {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    background: rgba(255,255,255,0.04);
+}
+
+.booking-card__meta,
+.booking-breakdown,
+.booking-timeline {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--text-secondary);
+}
+
+.booking-card__message {
+    margin: 0.85rem 0;
+    padding: 0.9rem;
+    border-left: 2px solid var(--accent-gold);
+    background: rgba(201,162,39,0.07);
+    color: var(--text-primary);
+}
+
+.booking-action-form {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.booking-timeline__item {
+    padding: 0.75rem 0 0.75rem 1rem;
+    border-left: 1px solid var(--line-subtle);
+}
+
+.booking-timeline__item.is-current,
+.booking-timeline__item.is-complete {
+    border-left-color: var(--accent-gold);
+}
+
+.notification-menu {
+    position: relative;
+}
+
+.notification-bell {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line-subtle);
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.025);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.notification-bell strong {
+    display: grid;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--accent-gold);
+    color: #050505;
+    font-size: 0.75rem;
+}
+
+.notification-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.6rem);
+    z-index: 30;
+    width: min(360px, 86vw);
+    padding: 0.75rem;
+    border: 1px solid var(--line-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(12,12,14,0.98);
+    box-shadow: var(--shadow-card);
+}
+
+.notification-item {
+    display: grid;
+    grid-template-columns: 0.65rem minmax(0, 1fr);
+    width: 100%;
+    gap: 0.7rem;
+    padding: 0.8rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-align: left;
+}
+
+.notification-read-form {
+    margin: 0;
+}
+
+.notification-item:hover,
+.notification-item.is-unread {
+    background: rgba(201,162,39,0.08);
+    color: var(--text-primary);
+}
+
+.notification-item strong,
+.notification-item small,
+.notification-item em {
+    display: block;
+}
+
+.notification-item em {
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-style: normal;
+}
+
+.notification-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: 0.35rem;
+    border-radius: 50%;
+    background: var(--accent-gold);
+}
+
+.notification-view-all {
+    display: block;
+    padding: 0.75rem;
+    color: var(--accent-gold);
+    font-weight: 700;
+    text-align: center;
+}
+
 .listing-form {
     position: relative;
 }
@@ -1506,7 +1665,8 @@ p {
 .status-limited,
 .status-under_review,
 .status-submitted,
-.status-pending_pickup {
+.status-pending_pickup,
+.status-requested {
     background: rgba(201,162,39,0.15);
     color: #eed689;
 }
@@ -1521,6 +1681,10 @@ p {
 .status-unavailable,
 .status-rejected,
 .status-cancelled,
+.status-cancelled_by_courier,
+.status-cancelled_by_owner,
+.status-expired,
+.status-disputed,
 .status-overdue {
     background: rgba(231,76,60,0.15);
     color: #ff8b7d;
