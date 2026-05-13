@@ -9,15 +9,29 @@ $listing = $listingId > 0 ? get_listing($listingId) : null;
 $user = current_user();
 if (!$listing || !user_can_manage_listing($listing, $user)) {
     http_response_code(403);
-    $dashboardTitle = 'Listing unavailable';
-    require_once __DIR__ . '/_layout.php';
     ?>
-    <section class="dash-panel">
-        <h2>Listing unavailable</h2>
-        <p>You do not have permission to edit this listing.</p>
-        <a href="<?= base_url() ?>/dashboard/owner/listings.php" class="btn btn-secondary">Back to listings</a>
-    </section>
-    <?php require_once __DIR__ . '/_footer.php'; exit;
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listing unavailable | Kaptain One</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= base_url() ?>/assets/css/main.css">
+        <link rel="stylesheet" href="<?= base_url() ?>/assets/css/responsive.css">
+    </head>
+    <body class="dashboard-shell">
+        <main class="dash-main" style="min-height: 100vh; display: grid; place-items: center;">
+            <section class="dash-panel" style="max-width: 640px;">
+                <span class="section-kicker">Access denied</span>
+                <h1>Listing unavailable</h1>
+                <p>You do not have permission to edit this listing.</p>
+                <a href="<?= base_url() ?>/dashboard/index.php" class="btn btn-secondary">Back to dashboard</a>
+            </section>
+        </main>
+    </body>
+    </html>
+    <?php exit;
 }
 
 $errors = [];
