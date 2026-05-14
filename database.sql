@@ -136,6 +136,8 @@ CREATE TABLE IF NOT EXISTS user_profiles (
     city VARCHAR(100) DEFAULT 'Warsaw',
     country VARCHAR(100) DEFAULT 'Poland',
     preferred_language VARCHAR(40) DEFAULT 'English',
+    preferred_pickup_district VARCHAR(40) NULL,
+    default_pickup_notes TEXT NULL,
     work_type VARCHAR(60),
     preferred_platforms TEXT,
     driver_license_status VARCHAR(60),

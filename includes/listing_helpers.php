@@ -147,7 +147,11 @@ function fetch_owner_listings(int $ownerUserId, string $status = 'all', string $
         $where[] = 'status = ?';
         $params[] = $status;
     }
-    $order = $sort === 'created_desc' ? 'created_at DESC' : 'updated_at DESC';
+    $order = match ($sort) {
+        'created_desc' => 'created_at DESC',
+        'updated_asc' => 'updated_at ASC',
+        default => 'updated_at DESC',
+    };
 
     return Database::fetchAll(
         "SELECT l.*,
