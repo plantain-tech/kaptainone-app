@@ -74,7 +74,7 @@ $pageTitle = 'Dashboard';
                     <li><a href="bookings.php">Marketplace Bookings</a></li>
                     <li><a href="packages.php">Packages</a></li>
                     <li><a href="applications.php">Leasing Applications</a></li>
-                    <li><a href="equipment.php">Equipment</a></li>
+                    <li><a href="equipment.php">Equipment <span style="display:block;font-size:0.75rem;color:var(--text-muted);font-weight:500;letter-spacing:0;">Kaptain-owned assets</span></a></li>
                     <li><a href="blog/">Blog Posts</a></li>
                     <li><a href="submissions/partners.php">Partner Inquiries<?= $new_partners > 0 ? " <span class='badge'>{$new_partners}</span>" : '' ?></a></li>
                     <li><a href="submissions/demos.php">Demo Requests<?= $new_demos > 0 ? " <span class='badge'>{$new_demos}</span>" : '' ?></a></li>
