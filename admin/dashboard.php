@@ -72,6 +72,8 @@ $pageTitle = 'Dashboard';
                     <li><a href="users.php">Gig Workers</a></li>
                     <li><a href="listings.php">Marketplace Listings</a></li>
                     <li><a href="bookings.php">Marketplace Bookings</a></li>
+                    <li><a href="transactions.php">Transactions</a></li>
+                    <li><a href="payouts.php">Payouts</a></li>
                     <li><a href="packages.php">Packages</a></li>
                     <li><a href="applications.php">Leasing Applications</a></li>
                     <li><a href="equipment.php">Equipment <span style="display:block;font-size:0.75rem;color:var(--text-muted);font-weight:500;letter-spacing:0;">Kaptain-owned assets</span></a></li>
@@ -113,6 +115,8 @@ $pageTitle = 'Dashboard';
                     <a href="blog/create.php" class="btn btn-primary">+ New Blog Post</a>
                     <a href="listings.php" class="btn btn-secondary">Moderate Listings</a>
                     <a href="bookings.php" class="btn btn-secondary">Review Bookings</a>
+                    <a href="transactions.php" class="btn btn-secondary">View Transactions</a>
+                    <a href="payouts.php" class="btn btn-secondary">View Payouts</a>
                     <a href="../" target="_blank" class="btn btn-secondary">View Site →</a>
                 </div>
             </div>

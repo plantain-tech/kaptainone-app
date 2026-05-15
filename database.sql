@@ -248,6 +248,8 @@ CREATE TABLE IF NOT EXISTS bookings (
     total_amount_pln DECIMAL(10,2) NOT NULL,
     platform_fee_pln DECIMAL(8,2) NOT NULL DEFAULT 0,
     owner_payout_pln DECIMAL(8,2) NOT NULL DEFAULT 0,
+    payment_status ENUM('unpaid','deposit_held','fully_paid','refunded','disputed') NULL DEFAULT 'unpaid',
+    total_paid_pln DECIMAL(10,2) NULL DEFAULT 0.00,
     courier_message TEXT NULL,
     owner_response_message TEXT NULL,
     status ENUM('requested','approved','rejected','cancelled_by_courier','cancelled_by_owner','active','completed','disputed','expired') NOT NULL DEFAULT 'requested',
@@ -298,6 +300,77 @@ CREATE TABLE IF NOT EXISTS notifications (
     FOREIGN KEY (related_booking_id) REFERENCES bookings(id) ON DELETE SET NULL,
     FOREIGN KEY (related_listing_id) REFERENCES listings(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS transactions (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    booking_id INT UNSIGNED NOT NULL,
+    transaction_type ENUM('rental_charge','deposit_hold','deposit_release','deposit_capture','payout_to_owner','platform_fee','refund_to_courier','chargeback','adjustment') NOT NULL,
+    amount_pln DECIMAL(10,2) NOT NULL,
+    currency CHAR(3) NOT NULL DEFAULT 'PLN',
+    processor ENUM('payu','przelewy24','stripe','manual','mock') NOT NULL,
+    processor_transaction_id VARCHAR(100) NULL,
+    processor_response_json JSON NULL,
+    status ENUM('pending','completed','failed','reversed') NOT NULL DEFAULT 'pending',
+    related_transaction_id INT UNSIGNED NULL,
+    initiated_by_user_id INT UNSIGNED NULL,
+    notes TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    completed_at TIMESTAMP NULL,
+    INDEX idx_transactions_booking_type (booking_id, transaction_type),
+    INDEX idx_transactions_processor_id (processor_transaction_id),
+    INDEX idx_transactions_status_created (status, created_at),
+    INDEX idx_transactions_related (related_transaction_id),
+    FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE RESTRICT,
+    FOREIGN KEY (related_transaction_id) REFERENCES transactions(id) ON DELETE SET NULL,
+    FOREIGN KEY (initiated_by_user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS payouts (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    owner_user_id INT UNSIGNED NOT NULL,
+    booking_id INT UNSIGNED NOT NULL,
+    amount_pln DECIMAL(10,2) NOT NULL,
+    payout_delay_days INT UNSIGNED NOT NULL,
+    scheduled_for DATE NOT NULL,
+    released_at TIMESTAMP NULL,
+    status ENUM('scheduled','processing','completed','failed','held') NOT NULL DEFAULT 'scheduled',
+    processor ENUM('payu','przelewy24','stripe','bank_transfer','manual','mock') NOT NULL,
+    processor_payout_id VARCHAR(100) NULL,
+    failure_reason TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_payouts_owner_status_schedule (owner_user_id, status, scheduled_for),
+    INDEX idx_payouts_booking (booking_id),
+    INDEX idx_payouts_status_schedule (status, scheduled_for),
+    FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT,
+    FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS owner_payout_preferences (
+    user_id INT UNSIGNED PRIMARY KEY,
+    default_payout_delay_days ENUM('1','3','7','14','30') NOT NULL DEFAULT '7',
+    bank_account_iban VARCHAR(34) NULL,
+    bank_account_holder_name VARCHAR(100) NULL,
+    payout_method ENUM('bank_transfer','digital_wallet','manual') NOT NULL DEFAULT 'bank_transfer',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS platform_fee_tiers (
+    payout_delay_days INT UNSIGNED PRIMARY KEY,
+    fee_percentage DECIMAL(5,2) NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_by_user_id INT UNSIGNED NULL,
+    FOREIGN KEY (updated_by_user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO platform_fee_tiers (payout_delay_days, fee_percentage) VALUES
+    (1, 15.00),
+    (3, 10.00),
+    (7, 7.00),
+    (14, 5.00),
+    (30, 3.00)
+ON DUPLICATE KEY UPDATE
+    fee_percentage = fee_percentage;
 
 CREATE TABLE IF NOT EXISTS equipment_items (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
