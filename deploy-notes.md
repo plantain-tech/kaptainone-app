@@ -11,3 +11,6 @@
 - Added gig worker public landing page, package browsing, package detail pages, registration, login, OAuth placeholder routes, dashboard, profile, leasing applications, leased equipment, and support workflow.
 - Added admin management screens for gig workers, equipment packages, leasing applications, and equipment inventory.
 - Extended `database.sql` with users, user profiles, OAuth accounts, equipment packages/items, leasing applications, leased equipment, and support messages.
+
+2026-05-15
+- Day 7 hardening release: escaped public page titles, added secure session cookie parameters (`HttpOnly`, `SameSite=Lax`), and enforced configured session inactivity lifetime.

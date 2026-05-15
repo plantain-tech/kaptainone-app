@@ -5,6 +5,61 @@
 
 require_once __DIR__ . '/../config/config.php';
 
+function configure_session_security(): void {
+    global $SECURITY_CONFIG;
+
+    if (session_status() !== PHP_SESSION_NONE) {
+        return;
+    }
+
+    $lifetime = (int)($SECURITY_CONFIG['session_lifetime'] ?? 3600);
+    ini_set('session.gc_maxlifetime', (string)$lifetime);
+
+    $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => '/',
+        'secure' => $secure,
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+}
+
+function kaptain_session_start(): void {
+    global $SECURITY_CONFIG;
+
+    if (session_status() === PHP_SESSION_NONE) {
+        configure_session_security();
+        session_start();
+    }
+
+    $lifetime = (int)($SECURITY_CONFIG['session_lifetime'] ?? 3600);
+    $now = time();
+    if (!empty($_SESSION['last_activity']) && $now - (int)$_SESSION['last_activity'] > $lifetime) {
+        $_SESSION = [];
+        if (ini_get('session.use_cookies')) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', [
+                'expires' => $now - 42000,
+                'path' => $params['path'],
+                'domain' => $params['domain'],
+                'secure' => $params['secure'],
+                'httponly' => $params['httponly'],
+                'samesite' => $params['samesite'] ?? 'Lax',
+            ]);
+        }
+        session_destroy();
+        configure_session_security();
+        session_start();
+    }
+
+    $_SESSION['last_activity'] = $now;
+}
+
+configure_session_security();
+
 // Escape output
 function e(string $text): string {
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
